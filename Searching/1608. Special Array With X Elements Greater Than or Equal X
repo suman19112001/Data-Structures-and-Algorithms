@@ -1,0 +1,46 @@
+class Solution {
+    public int specialArray(int[] nums) {
+        int count = 0;
+        int start = 0;
+        int end = findMax(nums);
+        while(start <= end)
+        {
+            int mid = start + (end - start) / 2;
+            count = findCount(nums, mid);
+            if(mid == count)
+            {
+                return mid;
+            }
+            if(mid < count)
+            {
+                start = mid + 1;
+            }
+            else
+            {
+                end = mid - 1;
+            }
+        }
+        return -1;
+    }
+    public int findMax(int[] nums)
+    {
+        int max = Integer.MIN_VALUE;
+        for(int i = 0; i < nums.length; i++)
+        {
+            max = Math.max(max, nums[i]);
+        }
+        return max;
+    }
+    public int findCount(int[] nums, int find)
+    {
+        int count = 0;
+        for(int i = 0; i < nums.length; i++)
+        {
+            if(nums[i] >= find)
+            {
+                count++;
+            }
+        }
+        return count;
+    }
+}
