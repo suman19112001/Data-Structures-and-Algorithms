@@ -49,4 +49,4 @@ class Solution {
         sort(arr, low, e);
         sort(arr, s, high);
     }
-}
+};
