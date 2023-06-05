@@ -1,0 +1,34 @@
+class Solution {
+    public int[][] merge(int[][] intervals) {
+        int[][] arr = new int[10001][];
+        int numIntervals = intervals.length;
+        for(int[] interval : intervals){
+            int[] lastMerged = null;
+            for(int i = interval[0]; i <= interval[1]; i++){
+                if(arr[i] != null){
+                    if(lastMerged != arr[i]){
+                        numIntervals--;
+                        lastMerged = arr[i];
+                        if(arr[i][0] < i){
+                            for(int j = arr[i][0]; j < interval[0]; j++){
+                                arr[j] = interval;
+                            }
+                            interval[0] = arr[i][0];
+                        }
+                        interval[1] = Math.max(interval[1], arr[i][1]);
+                    }
+                }
+                arr[i] = interval;
+            }
+        }
+        int[][] results = new int[numIntervals][];
+        int[] lastInterval = null;
+        for(int i = 0, j = 0; j < numIntervals; i++){
+            if(arr[i] != null && arr[i] != lastInterval){
+                lastInterval = arr[i];
+                results[j++] = lastInterval;
+            }
+        }
+        return results;
+    }
+}
