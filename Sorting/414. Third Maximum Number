@@ -32,4 +32,4 @@ class Solution {
         }
         return third_max;
     }
-};
+}
