@@ -13,4 +13,4 @@ class Solution {
         reverse(s, start+1, end-1);
         return s;
     }
-};
+}
