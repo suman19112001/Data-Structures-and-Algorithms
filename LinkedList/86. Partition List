@@ -19,4 +19,4 @@ class Solution {
         smallerTail.next = greaterHead.next;
         return smallerHead.next;
     }
-}
+};
