@@ -21,4 +21,4 @@ class Solution {
         }
         return new int[] {a_pointer+1, b_pointer+1};
     }
-}
+};
